@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 super años</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Quicksand', sans-serif; background: #fffafb; overflow-x: hidden; }
+        .font-handwritten { font-family: 'Caveat', cursive; }
+        .gradient-text {
+            background: linear-gradient(to right, #ff4d6d, #ff758f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .heart-button {
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .heart-button:active { transform: scale(0.9); }
+    </style>
+</head>
+<body class="text-gray-700">
+
+    <section class="min-h-screen flex flex-col justify-center items-center p-8 text-center">
+        <div class="mb-4 text-6xl">✨</div>
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">
+            Felices <span class="gradient-text">3 años!</span>
+        </h1>
+        <p class="text-xl text-gray-500 font-handwritten text-3xl">Análisis en números, momentos y mucho amor...</p>
+        
+        <div class="mt-16 animate-bounce text-rose-400">
+            <svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section class="py-16 px-4 bg-white shadow-inner" x-data="{ 
+        besos: 0, 
+        dias: 0, 
+        aventuras: 0,
+        init() {
+            setTimeout(() => { 
+                this.besos = 150000; 
+                this.dias = 1095; 
+                this.aventuras = 500 
+            }, 800)
+        }
+    }">
+        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+            
+            <div class="flex flex-col items-center">
+                <div class="w-20 h-20 bg-rose-100 rounded-full flex items-center justify-center mb-4 text-3xl">💋</div>
+                <h3 class="text-4xl font-bold text-rose-500" x-text="besos.toLocaleString() + '+'">0</h3>
+                <p class="text-gray-500 font-medium">Besos que te he dado</p>
+            </div>
+
+            <div class="flex flex-col items-center">
+                <div class="w-20 h-20 bg-pink-100 rounded-full flex items-center justify-center mb-4 text-3xl">☀️</div>
+                <h3 class="text-4xl font-bold text-pink-500" x-text="dias.toLocaleString()">0</h3>
+                <p class="text-gray-500 font-medium">Días siendo feliz a tu lado</p>
+            </div>
+
+            <div class="flex flex-col items-center">
+                <div class="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mb-4 text-3xl">✈️</div>
+                <h3 class="text-4xl font-bold text-orange-500" x-text="aventuras.toLocaleString() + '+'">0</h3>
+                <p class="text-gray-500 font-medium">Aventuras juntos</p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="py-24 px-6 text-center">
+        <div class="max-w-2xl mx-auto border-l-4 border-rose-300 pl-6 italic">
+            <p class="text-2xl text-gray-600 mb-4">
+                "Si sumamos cada minuto y cada segundo, el resultado del análisis es siempre el mismo: eres lo mejor que me ha pasado <3."
+            </p>
+            <p class="font-handwritten text-4xl text-rose-500 italic">- Tu super novio, Unai</p>
+        </div>
+    </section>
+
+    <section class="py-20 text-center bg-rose-50/30">
+        <h2 class="text-2xl font-bold text-gray-600 mb-8">VIVA VIVA VIVA SUPER 3</h2>
+        <button 
+            onclick="lanzarConfeti()"
+            class="heart-button bg-rose-500 hover:bg-rose-600 text-white font-bold py-4 px-8 rounded-full shadow-lg text-xl flex items-center mx-auto gap-2">
+            <span>Haz clic aquí</span>
+            <span class="text-2xl">❤️</span>
+        </button>
+        <p class="mt-4 text-gray-400 text-sm italic">Cuidado: contiene exceso de amor</p>
+    </section>
+
+    <footer class="pb-12 text-center">
+        <div class="inline-block p-4 rounded-full bg-rose-50 text-rose-500 font-bold">
+            ❤️ Feliz 3er Aniversario ❤️
+        </div>
+    </footer>
+
+    <script>
+        function lanzarConfeti() {
+            var duracion = 3 * 1000;
+            var final = Date.now() + duracion;
+
+            (function frame() {
+                confetti({
+                    particleCount: 5,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: ['#ff4d6d', '#ff758f', '#ff8fa3']
+                });
+                confetti({
+                    particleCount: 5,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: ['#ff4d6d', '#ff758f', '#ff8fa3']
+                });
+
+                if (Date.now() < final) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+    </script>
+</body>
+</html>
