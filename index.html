@@ -20,12 +20,22 @@
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .heart-button:active { transform: scale(0.9); }
+        /* Animación suave para el minion */
+        .minion-bounce {
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
     </style>
 </head>
 <body class="text-gray-700">
 
     <section class="min-h-screen flex flex-col justify-center items-center p-8 text-center">
-        <div class="mb-4 text-6xl">✨</div>
+        <div class="mb-6 minion-bounce">
+            <img src="minion.jpg" alt="Minion Love" class="w-32 md:w-48 mx-auto rounded-xl">
+        </div>
         <h1 class="text-4xl md:text-6xl font-bold mb-4">
             Felices <span class="gradient-text">3 años!</span>
         </h1>
@@ -72,7 +82,6 @@
 
         </div>
     </section>
-
 
     <section class="py-24 px-6 text-center">
         <div class="max-w-2xl mx-auto border-l-4 border-rose-300 pl-6 italic">
